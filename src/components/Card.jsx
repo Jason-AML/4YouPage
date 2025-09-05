@@ -2,14 +2,21 @@ import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Modal } from "./Modal";
 
-export const Card = ({ product, enableActions = true }) => {
-  const { handleBuy } = useContext(ProductContext);
+export const Card = ({
+  product,
+  enableActions = true,
+  enableDelate = true,
+}) => {
+  const { handleBuy, handleDelete } = useContext(ProductContext);
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
   const onBuy = () => {
     handleBuy(product);
+  };
+  const onDelete = () => {
+    handleDelete(product);
   };
   return (
     <div className="card bg-base-100 w-96 h-120 shadow-sm">
@@ -27,7 +34,7 @@ export const Card = ({ product, enableActions = true }) => {
                 Buy Now
               </button>
               <button className="btn" onClick={openModal}>
-                Open Modal
+                DESCRIPTION
               </button>
               <Modal
                 title={product.title}
@@ -37,6 +44,15 @@ export const Card = ({ product, enableActions = true }) => {
                 closeModal={closeModal}
                 showModal={showModal}
               />
+            </div>
+          </>
+        )}
+        {enableDelate && (
+          <>
+            <div className="card-actions justify-end">
+              <button className="btn btn-primary" onClick={onDelete}>
+                Delete
+              </button>
             </div>
           </>
         )}

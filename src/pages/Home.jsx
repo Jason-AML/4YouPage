@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero showText={false} />
       <FilterProduct />
     </>
   );

@@ -59,7 +59,7 @@ export const FilterProduct = () => {
         ) : (
           <div className="flex flex-wrap gap-4 items-center justify-center">
             {results.map((product) => (
-              <Card key={product.id} product={product} />
+              <Card key={product.id} product={product} enableDelate={false} />
             ))}
           </div>
         )}

@@ -11,12 +11,16 @@ export const ProductProvider = ({ children }) => {
     } else {
       setCar((prev) => [...prev, product]);
       toast.success(` "${product.title}" agregado al carrito`);
-      console.log(car);
     }
+  };
+  const handleDelete = (productToDelete) => {
+    const newCar = car.filter((item) => item.id !== productToDelete.id);
+    setCar(newCar);
+    console.log(car);
   };
 
   return (
-    <ProductContext.Provider value={{ car, handleBuy }}>
+    <ProductContext.Provider value={{ car, handleBuy, handleDelete }}>
       {children}
     </ProductContext.Provider>
   );

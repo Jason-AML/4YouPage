@@ -9,7 +9,7 @@ export const Modal = ({
   return (
     <>
       {showModal && (
-        <dialog id="my_modal_3" className="modal" open>
+        <dialog id="modal-product" className="modal" open>
           <div className="modal-box relative">
             <button
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"

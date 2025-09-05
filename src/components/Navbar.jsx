@@ -45,7 +45,9 @@ function Navbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">4You</a>
+        <Link to="/" className="text-2xl">
+          4You
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
