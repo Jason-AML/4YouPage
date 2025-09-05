@@ -6,9 +6,11 @@ import { ProductProvider } from "./context/ProductProvider.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <AuthProvider>
-    <ProductProvider>
-      <App />
-    </ProductProvider>
-  </AuthProvider>
+  <StrictMode>
+    <AuthProvider>
+      <ProductProvider>
+        <App />
+      </ProductProvider>
+    </AuthProvider>
+  </StrictMode>
 );
