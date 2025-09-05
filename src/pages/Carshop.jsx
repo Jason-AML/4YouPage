@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Card } from "../components/Card";
 import Navbar from "../components/Navbar";
+import { useAuth } from "../context/AuthContext";
 
 export const Carshop = () => {
   const { car = [] } = useContext(ProductContext);
   const [total, setTotal] = useState(0);
+  const { user } = useAuth();
 
   useEffect(() => {
     const sumaTotal = car.reduce((acc, product) => acc + product.price, 0);
@@ -27,6 +29,7 @@ export const Carshop = () => {
               ))}
             </div>
             <p>Total: ${total}</p>
+            {user && <button className="btn btn-primary ">comprar</button>}
           </>
         )}
       </main>

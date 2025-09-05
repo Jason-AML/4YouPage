@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Modal } from "./Modal";
+import { useAuth } from "../context/AuthContext";
 
 export const Card = ({
   product,
   enableActions = true,
   enableDelate = true,
 }) => {
+  const { user } = useAuth();
   const { handleBuy, handleDelete } = useContext(ProductContext);
   const [showModal, setShowModal] = useState(false);
 
