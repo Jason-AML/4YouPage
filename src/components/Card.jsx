@@ -1,15 +1,14 @@
 import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Modal } from "./Modal";
-import { useAuth } from "../context/AuthContext";
 
 export const Card = ({
   product,
   enableActions = true,
   enableDelate = true,
 }) => {
-  const { user } = useAuth();
-  const { handleBuy, handleDelete } = useContext(ProductContext);
+  const { handleBuy, handleDelete, handleAddQuantity, handleSubtractQuantity } =
+    useContext(ProductContext);
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => setShowModal(true);
@@ -19,6 +18,12 @@ export const Card = ({
   };
   const onDelete = () => {
     handleDelete(product);
+  };
+  const addQuantity = () => {
+    handleAddQuantity(product.id);
+  };
+  const substractQuantity = () => {
+    handleSubtractQuantity(product.id);
   };
   return (
     <div className="card bg-base-100 w-96 h-120 shadow-sm">
@@ -51,7 +56,19 @@ export const Card = ({
         )}
         {enableDelate && (
           <>
-            <div className="card-actions justify-end">
+            <div className="card-actions justify-end flex">
+              <div className="quantity flex items-center justify-center">
+                <button
+                  className="btn btn-secondary"
+                  onClick={substractQuantity}
+                >
+                  -
+                </button>
+                <p>{product.quantity}</p>
+                <button className="btn btn-secondary" onClick={addQuantity}>
+                  +
+                </button>
+              </div>
               <button className="btn btn-primary" onClick={onDelete}>
                 Delete
               </button>

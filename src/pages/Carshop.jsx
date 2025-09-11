@@ -10,7 +10,10 @@ export const Carshop = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    const sumaTotal = car.reduce((acc, product) => acc + product.price, 0);
+    const sumaTotal = car.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
     setTotal(sumaTotal);
   }, [car]);
   return (
@@ -23,13 +26,13 @@ export const Carshop = () => {
           </p>
         ) : (
           <>
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap justify-center gap-5 py-5">
               {car.map((item) => (
                 <Card key={item.id} product={item} enableActions={false} />
               ))}
             </div>
-            <p>Total: ${total}</p>
-            {user && <button className="btn btn-primary ">comprar</button>}
+            <p>Total: ${Math.round(total)}</p>
+            {user && <button className="btn btn-primary">comprar</button>}
           </>
         )}
       </main>
