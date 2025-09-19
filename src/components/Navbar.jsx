@@ -51,9 +51,16 @@ function Navbar() {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button className="btn btn-ghost " onClick={logout}>
-            {user.email}
-          </button>
+          <>
+            <div className="flex gap-3 justify-center items-center">
+              <Link to="/perfil" className="btn btn-ghost">
+                {user.email}
+              </Link>
+              <button className="btn btn-ghost " onClick={logout}>
+                cerrar sesion
+              </button>
+            </div>
+          </>
         ) : (
           <button className="btn btn-ghost ">
             <Link to="/register">registrarse</Link>

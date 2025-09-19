@@ -33,7 +33,7 @@ export const Login = () => {
         />
 
         <button className="btn btn-neutral mt-4" onClick={handleLogin}>
-          Registrase
+          Logearse
         </button>
         <span>
           <Link to="/register">No tienes cuenta?</Link>

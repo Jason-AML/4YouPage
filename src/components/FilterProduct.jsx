@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetchProduct } from "../hooks/useFetchProduct";
 import { Card } from "./Card";
 
-export const FilterProduct = () => {
+export const FilterProduct = ({ filterCategory = true }) => {
   const { items, loading } = useFetchProduct(
     "https://fakestoreapi.com/products"
   );
@@ -24,33 +24,21 @@ export const FilterProduct = () => {
     <>
       <section id="cards">
         <h3 className="flex justify-center p-5">OUR PRODUCTS</h3>
-        <form onSubmit={searcher} className="m-5">
-          <label htmlFor="filter">
-            <input
-              id="filter"
-              type="text"
-              placeholder="Men´s Clothing"
-              value={search}
-              onChange={searcher}
-            />
-          </label>
-          <button className="btn btn-ghost btn-circle" type="submit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        {filterCategory && (
+          <form className="flex gap-2 items-center py-4">
+            <label htmlFor="filter">
+              Category:
+              <input
+                id="filter"
+                type="text"
+                placeholder="Men's Clothing"
+                value={search}
+                onChange={searcher}
+                className="input input-bordered"
               />
-            </svg>
-          </button>
-        </form>
+            </label>
+          </form>
+        )}
 
         {loading ? (
           <p>Cargando</p>

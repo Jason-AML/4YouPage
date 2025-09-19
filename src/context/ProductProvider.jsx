@@ -42,7 +42,6 @@ export const ProductProvider = ({ children }) => {
         car,
         handleBuy,
         handleDelete,
-
         handleAddQuantity,
         handleSubtractQuantity,
       }}
