@@ -20,7 +20,7 @@ export const Carshop = () => {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="pt-20">
         {car.length === 0 ? (
           <p className="flex items-center justify-center h-screen">
             No hay productos

@@ -3,14 +3,14 @@ import { HashLink } from "react-router-hash-link";
 import { useContext } from "react";
 
 import { useAuth } from "../../context/AuthContext";
-import imgUser from "../../assets/blank-profile-picture.webp";
+import imgUser from "../../assets/perfil/blank-profile-picture.webp";
 import ProductContext from "../../context/ProductContext";
 
 function Navbar() {
   const { car = [] } = useContext(ProductContext);
   const { user, logout } = useAuth();
   return (
-    <nav className="navbar bg-base-100 shadow-sm">
+    <nav className="navbar bg-base-300 shadow-sm ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -34,21 +34,25 @@ function Navbar() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link to="/">HOME</Link>
+              <Link to="/">
+                <i className="bxr  bx-home"></i> HOME
+              </Link>
             </li>
             <li>
-              <Link to="#">PORTFOLIO</Link>
+              <Link to="#">
+                <i className="bxr  bx-luggage"></i> PORTFOLIO
+              </Link>
             </li>
             <li>
               <HashLink smooth to="/#cards">
-                PRODUCTS
+                <i class="bxr  bx-groceries"></i> PRODUCTS
               </HashLink>
             </li>
           </ul>
         </div>
       </div>
       <div className="navbar-center">
-        <Link to="/" className="text-2xl">
+        <Link to="/" className="text-4xl font-bold">
           4You
         </Link>
       </div>
@@ -74,9 +78,12 @@ function Navbar() {
             </div>
           </>
         ) : (
-          <button className="btn btn-ghost ">
-            <Link to="/register">registrarse</Link>
-          </button>
+          <Link
+            to="/register"
+            className="btn hover:scale-105 transition ease-in-out duration-300"
+          >
+            registrarse
+          </Link>
         )}
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">

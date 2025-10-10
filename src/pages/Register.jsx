@@ -3,7 +3,7 @@ import { auth } from "../firebase/firebase.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import bg from "../assets/6drive_5.webp";
+import bg from "../assets/hero/boy.webp";
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

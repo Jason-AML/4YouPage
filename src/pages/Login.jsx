@@ -2,7 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase.js";
-import bg from "../assets/6drive_5.webp";
+import bg from "../assets/hero/boy.webp";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

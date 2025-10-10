@@ -1,29 +1,60 @@
-import drive_5 from "../../assets/6drive_5.webp";
-
-export const Hero = ({ showText = true }) => {
+export const Hero = ({ leftImg, rightImg }) => {
   return (
-    <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage: `url(${drive_5})`,
-      }}
-    >
-      <div className=""></div>
-      {showText && (
-        <>
-          <div className="hero-content text-neutral-content text-start">
-            <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-              <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-              </p>
-              <button className="btn btn-primary">Get Started</button>
-            </div>
+    <div className="grid min-h-screen grid-cols-2 content-center ">
+      <div className=" h-[100vh] relative">
+        <img
+          src={leftImg}
+          alt=""
+          className="w-full h-full object-cover object-[center_top]"
+        />
+        <div className="absolute bottom-10 left-5 z-10 text-2xl ">
+          <h2 className="font-bold text-4xl text-[#FD607B]">
+            WOMEN'S COLLECTION 2025
+          </h2>
+          <div>
+            <p
+              className="font-bold text-white"
+              style={{
+                WebkitTextStroke: "0.2px black",
+              }}
+            >
+              La colección Women’s 2025 fusiona comodidad y diseño vanguardista.
+              Piezas versátiles que se adaptan a cada momento: del día a la
+              noche, del trabajo a la ciudad.
+            </p>
           </div>
-        </>
-      )}
+          <div>
+            <button className="btn btn-error">DISCOVER</button>
+          </div>
+        </div>
+      </div>
+      <div className="h-[100vh] relative">
+        <img
+          src={rightImg}
+          alt=""
+          className="w-full h-full object-cover object-[center_top] "
+        />
+        <div className="absolute bottom-10 left-5 z-10 text-2xl ">
+          <h2 className="font-bold text-4xl text-[#2f36d3]">
+            MEN´S COLLECTION 2025
+          </h2>
+          <div>
+            <p
+              className="font-bold text-white"
+              style={{
+                WebkitTextStroke: "0.2px black",
+              }}
+            >
+              Hecha para el hombre consciente. Tejidos responsables, líneas
+              puras y un enfoque en la comodidad sin sacrificar el estilo. Moda
+              que respira autenticidad.
+            </p>
+          </div>
+          <div>
+            <button className="btn bg-[#2f36d3] border-none">DISCOVER</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

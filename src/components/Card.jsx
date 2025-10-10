@@ -13,6 +13,7 @@ export const Card = ({
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
+
   const onBuy = () => {
     handleBuy(product);
   };
@@ -27,12 +28,28 @@ export const Card = ({
   };
   return (
     <div className="card bg-base-100 w-96 h-120 shadow-sm">
-      <figure className="h-100 ">
+      <figure className="h-100 relative ">
         <img src={product.image} alt={product.title} className="h-75" />
+        <div className="flex flex-col gap-2 absolute right-5 top-5">
+          <button className="btn btn-circle">
+            <i className="bxr  bx-heart text-2xl"></i>
+          </button>
+          <button className="btn btn-circle" onClick={openModal}>
+            <i class="bxr  bx-eye text-2xl"></i>
+          </button>
+          <Modal
+            title={product.title}
+            description={product.description}
+            category={product.category}
+            image={product.image}
+            closeModal={closeModal}
+            showModal={showModal}
+          />
+        </div>
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product.title}</h2>
-        <p>${product.price}</p>
+        <p className="text-[#DB4444]">${product.price}</p>
 
         {enableActions && (
           <>
@@ -40,17 +57,6 @@ export const Card = ({
               <button className="btn btn-primary" onClick={onBuy}>
                 Buy Now
               </button>
-              <button className="btn" onClick={openModal}>
-                DESCRIPTION
-              </button>
-              <Modal
-                title={product.title}
-                description={product.description}
-                category={product.category}
-                image={product.image}
-                closeModal={closeModal}
-                showModal={showModal}
-              />
             </div>
           </>
         )}
