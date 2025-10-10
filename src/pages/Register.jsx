@@ -3,7 +3,7 @@ import { auth } from "../firebase/firebase.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import bg from "../assets/6drive_5.webp";
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,10 @@ export const Register = () => {
     );
   };
   return (
-    <main className="flex items-center justify-center h-screen">
+    <main
+      className="flex items-center justify-center h-screen"
+      style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}
+    >
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         <legend className="fieldset-legend">Register</legend>
 

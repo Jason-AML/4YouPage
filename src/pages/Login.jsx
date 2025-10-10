@@ -2,17 +2,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase.js";
+import bg from "../assets/6drive_5.webp";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      navigate("/carshop");
+      navigate("/");
     });
   };
   return (
-    <main className="flex items-center justify-center h-screen">
+    <main
+      className="flex items-center justify-center h-screen"
+      style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}
+    >
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
         <legend className="fieldset-legend">Login</legend>
 
@@ -33,7 +37,7 @@ export const Login = () => {
         />
 
         <button className="btn btn-neutral mt-4" onClick={handleLogin}>
-          Logearse
+          Entrar
         </button>
         <span>
           <Link to="/register">No tienes cuenta?</Link>

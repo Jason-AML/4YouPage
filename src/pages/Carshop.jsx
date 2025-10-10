@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Card } from "../components/Card";
-import Navbar from "../components/Navbar";
+
 import { useAuth } from "../context/AuthContext";
+import Navbar from "../components/navbar/Navbar";
 
 export const Carshop = () => {
   const { car = [] } = useContext(ProductContext);

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
-import { Modal } from "./Modal";
+import { Modal } from "./modal/Modal";
 
 export const Card = ({
   product,
@@ -57,15 +57,18 @@ export const Card = ({
         {enableDelate && (
           <>
             <div className="card-actions justify-end flex">
-              <div className="quantity flex items-center justify-center">
+              <div className="quantity flex items-center justify-center gap-2">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-neutral-content  w-5 h-8"
                   onClick={substractQuantity}
                 >
                   -
                 </button>
                 <p>{product.quantity}</p>
-                <button className="btn btn-secondary" onClick={addQuantity}>
+                <button
+                  className="btn btn-neutral w-5 h-8"
+                  onClick={addQuantity}
+                >
                   +
                 </button>
               </div>

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useContext } from "react";
-import ProductContext from "../context/ProductContext";
-import { useAuth } from "../context/AuthContext";
+
+import { useAuth } from "../../context/AuthContext";
+import imgUser from "../../assets/blank-profile-picture.webp";
+import ProductContext from "../../context/ProductContext";
+
 function Navbar() {
   const { car = [] } = useContext(ProductContext);
   const { user, logout } = useAuth();
@@ -53,11 +56,20 @@ function Navbar() {
         {user ? (
           <>
             <div className="flex gap-3 justify-center items-center">
-              <Link to="/perfil" className="btn btn-ghost">
-                {user.email}
+              <Link
+                to="/perfil"
+                className="btn btn-circle w-12 h-12 flex items-center justify-center overflow-hidden border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300"
+                style={{
+                  backgroundImage: `url(${imgUser})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                title="Ir a mi perfil"
+              >
+                <span className="sr-only">Mi perfil</span>
               </Link>
               <button className="btn btn-ghost " onClick={logout}>
-                cerrar sesion
+                <i className="bxr  bx-arrow-out-left-square-half "></i>
               </button>
             </div>
           </>
@@ -68,7 +80,7 @@ function Navbar() {
         )}
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
-            <Link to="/carshop">
+            <Link to="/carshop" className="items-center justify-center flex">
               <i className="bxr  bx-cart-minus text-2xl"></i>
               <span className="badge badge-xs badge-primary indicator-item">
                 {car.length}

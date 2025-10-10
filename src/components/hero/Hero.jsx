@@ -1,4 +1,4 @@
-import drive_5 from "../assets/6drive_5.webp";
+import drive_5 from "../../assets/6drive_5.webp";
 
 export const Hero = ({ showText = true }) => {
   return (
