@@ -18,6 +18,7 @@ export const Card = ({
     handleBuy(product);
   };
   const onDelete = () => {
+    console.log(product);
     handleDelete(product);
   };
   const addQuantity = () => {

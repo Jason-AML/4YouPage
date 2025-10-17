@@ -1,32 +1,36 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ProductContext from "./ProductContext";
 import { toast } from "react-toastify";
 export const ProductProvider = ({ children }) => {
   const [car, setCar] = useState([]);
 
-  const handleBuy = (product, quantity = 1) => {
-    const exist = car.some((item) => item.id === product.id);
-    if (exist) {
-      toast.error("El producto ya esta agregado");
-    } else {
-      const productWithQuantity = { ...product, quantity };
-      setCar((prev) => [...prev, productWithQuantity]);
-      toast.success(` "${product.title}" agregado al carrito`);
-    }
-  };
-  const handleDelete = (productToDelete) => {
-    const newCar = car.filter((item) => item.id !== productToDelete.id);
-    setCar(newCar);
-    console.log(car);
-  };
-  const handleAddQuantity = (productId) => {
+  const handleBuy = useCallback(
+    (product, quantity = 1) => {
+      const exist = car.some((item) => item.id === product.id);
+      if (exist) {
+        toast.error("El producto ya está agregado");
+      } else {
+        const productWithQuantity = { ...product, quantity };
+        setCar((prev) => [...prev, productWithQuantity]);
+        toast.success(`"${product.title}" agregado al carrito`);
+      }
+    },
+    [car]
+  );
+  const handleDelete = useCallback((productToDelete) => {
+    setCar((prevCar) =>
+      prevCar.filter((item) => item.id !== productToDelete.id)
+    );
+  }, []);
+
+  const handleAddQuantity = useCallback((productId) => {
     setCar((prevCar) =>
       prevCar.map((item) =>
         item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
-  };
-  const handleSubtractQuantity = (productId) => {
+  }, []);
+  const handleSubtractQuantity = useCallback((productId) => {
     setCar((prevCar) =>
       prevCar.map((item) =>
         item.id === productId && item.quantity > 1
@@ -34,8 +38,7 @@ export const ProductProvider = ({ children }) => {
           : item
       )
     );
-  };
-
+  }, []);
   return (
     <ProductContext.Provider
       value={{
