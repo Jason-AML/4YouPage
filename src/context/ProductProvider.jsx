@@ -18,6 +18,7 @@ export const ProductProvider = ({ children }) => {
     [car]
   );
   const handleDelete = useCallback((productToDelete) => {
+    console.log(productToDelete);
     setCar((prevCar) =>
       prevCar.filter((item) => item.id !== productToDelete.id)
     );
