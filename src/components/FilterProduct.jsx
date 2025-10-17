@@ -22,10 +22,10 @@ export const FilterProduct = ({ filterCategory = true }) => {
   }
   return (
     <>
-      <section id="cards">
-        <h3 className="flex justify-center p-5">OUR PRODUCTS</h3>
+      <section id="cards" className="bg-base-300 ">
+        <h3 className="flex  p-5 text-4xl font-bold">OUR COLLETION</h3>
         {filterCategory && (
-          <form className="flex gap-2 items-center py-4">
+          <form className="flex gap-2 items-center  p-5">
             <label htmlFor="filter">
               Category:
               <input
