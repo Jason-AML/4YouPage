@@ -10,9 +10,9 @@ function Navbar() {
   const { car = [] } = useContext(ProductContext);
   const { user, logout } = useAuth();
   return (
-    <nav className="navbar bg-base-300 shadow-sm ">
-      <div className="navbar-start">
-        <div className="dropdown">
+    <nav className="navbar bg-base-300 shadow-sm md:justify-between">
+      <div className="flex justify-between">
+        <div className="dropdown md:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,13 +39,13 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="#">
-                <i className="bxr  bx-luggage"></i> PORTFOLIO
+              <Link to="/login">
+                <i className="bxr  bx-luggage"></i> INGRESAR
               </Link>
             </li>
             <li>
               <HashLink smooth to="/#cards">
-                <i class="bxr  bx-groceries"></i> PRODUCTS
+                <i className="bxr  bx-groceries"></i> PRODUCTS
               </HashLink>
             </li>
           </ul>
@@ -56,7 +56,7 @@ function Navbar() {
           4You
         </Link>
       </div>
-      <div className="navbar-end">
+      <div className=" gap-x-5 hidden md:flex ">
         {user ? (
           <>
             <div className="flex gap-3 justify-center items-center">

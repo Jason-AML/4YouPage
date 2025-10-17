@@ -1,58 +1,48 @@
-export const Hero = ({ leftImg, rightImg }) => {
+import { motion } from "framer-motion";
+
+motion;
+
+export const Hero = ({ bgImage }) => {
   return (
-    <div className="grid min-h-screen grid-cols-2 content-center ">
+    <div className="grid min-h-screen  content-center ">
       <div className=" h-[100vh] relative">
         <img
-          src={leftImg}
+          src={bgImage}
           alt=""
-          className="w-full h-full object-cover object-[center_top]"
+          className="w-full h-full object-cover md:object-[center_top] object-top-left "
         />
-        <div className="absolute bottom-10 left-5 z-10 text-2xl ">
-          <h2 className="font-bold text-4xl text-[#FD607B]">
-            WOMEN'S COLLECTION 2025
-          </h2>
-          <div>
+        <div className="absolute bottom-20 left-5 z-10 text-2xl flex flex-col gap-5 ">
+          <motion.h2
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+            }}
+            className="font-bold text-4xl text-[#FD607B]"
+          >
+            Vive el estilo sin limites
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, x: -300 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              delay: 0.3,
+            }}
+            className="flex flex-col gap-2"
+          >
             <p
               className="font-bold text-white"
               style={{
                 WebkitTextStroke: "0.2px black",
               }}
             >
-              La colección Women’s 2025 fusiona comodidad y diseño vanguardista.
-              Piezas versátiles que se adaptan a cada momento: del día a la
-              noche, del trabajo a la ciudad.
+              Nueva colección inspirada en la elegancia del camino.
             </p>
-          </div>
-          <div>
-            <button className="btn btn-error">DISCOVER</button>
-          </div>
-        </div>
-      </div>
-      <div className="h-[100vh] relative">
-        <img
-          src={rightImg}
-          alt=""
-          className="w-full h-full object-cover object-[center_top] "
-        />
-        <div className="absolute bottom-10 left-5 z-10 text-2xl ">
-          <h2 className="font-bold text-4xl text-[#2f36d3]">
-            MEN´S COLLECTION 2025
-          </h2>
-          <div>
-            <p
-              className="font-bold text-white"
-              style={{
-                WebkitTextStroke: "0.2px black",
-              }}
-            >
-              Hecha para el hombre consciente. Tejidos responsables, líneas
-              puras y un enfoque en la comodidad sin sacrificar el estilo. Moda
-              que respira autenticidad.
-            </p>
-          </div>
-          <div>
-            <button className="btn bg-[#2f36d3] border-none">DISCOVER</button>
-          </div>
+            <button className="btn btn-error w-50">DISCOVER</button>
+          </motion.div>
         </div>
       </div>
     </div>

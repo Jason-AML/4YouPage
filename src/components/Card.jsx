@@ -35,7 +35,7 @@ export const Card = ({
             <i className="bxr  bx-heart text-2xl"></i>
           </button>
           <button className="btn btn-circle" onClick={openModal}>
-            <i class="bxr  bx-eye text-2xl"></i>
+            <i className="bxr  bx-eye text-2xl"></i>
           </button>
           <Modal
             title={product.title}
@@ -49,7 +49,7 @@ export const Card = ({
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product.title}</h2>
-        <p className="text-[#DB4444]">${product.price}</p>
+        <p className="text-[#DB4444] text-2xl font-bold">${product.price}</p>
 
         {enableActions && (
           <>

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export const Modal = ({
   title,
   description,
@@ -10,7 +12,17 @@ export const Modal = ({
     <>
       {showModal && (
         <dialog id="modal-product" className="modal" open>
-          <div className="modal-box relative">
+          <motion.div
+            initial={{ opacity: 0, y: 1000 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+              duration: 0.4,
+            }}
+            className="modal-box relative"
+          >
             <button
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={closeModal}
@@ -26,7 +38,7 @@ export const Modal = ({
               <strong>{category}</strong>
             </p>
             <p className="py-4">{description}</p>
-          </div>
+          </motion.div>
         </dialog>
       )}
     </>
