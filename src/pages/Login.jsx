@@ -25,6 +25,7 @@ export const Login = () => {
           type="email"
           className="input"
           placeholder="Email"
+          required
           onChange={(e) => setEmail(e.target.value)}
         />
 
@@ -33,6 +34,7 @@ export const Login = () => {
           type="password"
           className="input"
           placeholder="Password"
+          required
           onChange={(e) => setPassword(e.target.value)}
         />
 
@@ -41,6 +43,7 @@ export const Login = () => {
         </button>
         <span>
           <Link to="/register">No tienes cuenta?</Link>
+          <Link to="/"> Volver al inicio</Link>
         </span>
       </fieldset>
     </main>

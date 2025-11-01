@@ -45,8 +45,9 @@ export const Register = () => {
         <button className="btn btn-neutral mt-4" onClick={registerUser}>
           Registrase
         </button>
-        <span>
+        <span className="flex justify-around">
           <Link to="/login">Ya tienes cuenta?</Link>
+          <Link to="/"> Volver al inicio</Link>
         </span>
       </fieldset>
     </main>
