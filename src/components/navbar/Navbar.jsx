@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useContext } from "react";
-
+import iconCar from "../../assets/icons/cart.png";
 import { useAuth } from "../../context/AuthContext";
 import imgUser from "../../assets/perfil/blank-profile-picture.webp";
 import ProductContext from "../../context/ProductContext";
@@ -73,7 +73,7 @@ function Navbar() {
                 <span className="sr-only">Mi perfil</span>
               </Link>
               <button className="btn btn-ghost " onClick={logout}>
-                <i className="bxr  bx-arrow-out-left-square-half "></i>
+                <i className="bxr  bx-arrow-out-left-square-half ">LOGOUT</i>
               </button>
             </div>
           </>
@@ -82,13 +82,13 @@ function Navbar() {
             to="/register"
             className="btn hover:scale-105 transition ease-in-out duration-300"
           >
-            registrarse
+            REGISTER
           </Link>
         )}
         <button className="btn btn-ghost btn-circle">
           <div className="indicator">
             <Link to="/carshop" className="items-center justify-center flex">
-              <i className="bxr  bx-cart-minus text-2xl"></i>
+              <img src={iconCar} alt="Carrito de compras" className="w-5 h-5" />
               <span className="badge badge-xs badge-primary indicator-item">
                 {car.length}
               </span>
