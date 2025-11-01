@@ -4,6 +4,7 @@ import { Card } from "../components/Card";
 
 import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/navbar/Navbar";
+import { AnimatePresence } from "framer-motion";
 
 export const Carshop = () => {
   const { car = [] } = useContext(ProductContext);
@@ -28,10 +29,15 @@ export const Carshop = () => {
         ) : (
           <>
             <div className="flex flex-wrap justify-center gap-5 py-5">
-              {car.map((item) => (
-                <Card key={item.id} product={item} enableActions={false} />
-              ))}
+              <AnimatePresence>
+                {car.map((item) => (
+                  <>
+                    <Card key={item.id} product={item} enableActions={false} />
+                  </>
+                ))}
+              </AnimatePresence>
             </div>
+
             <p>Total: ${Math.round(total)}</p>
             {user && <button className="btn btn-primary">comprar</button>}
           </>

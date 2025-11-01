@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import ProductContext from "../context/ProductContext";
 import { Modal } from "./modal/Modal";
+import { motion } from "framer-motion";
 
 export const Card = ({
   product,
@@ -28,7 +29,14 @@ export const Card = ({
     handleSubtractQuantity(product.id);
   };
   return (
-    <div className="card bg-base-100 w-96 h-120 shadow-sm">
+    <motion.div
+      key="box"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3 }}
+      className="p-6  rounded  card bg-base-100 w-96 h-120 shadow-sm"
+    >
       <figure className="h-100 relative ">
         <img src={product.image} alt={product.title} className="h-75" />
         <div className="flex flex-col gap-2 absolute right-5 top-5">
@@ -86,6 +94,6 @@ export const Card = ({
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
