@@ -41,7 +41,7 @@ export const Login = () => {
         <button className="btn btn-neutral mt-4" onClick={handleLogin}>
           Entrar
         </button>
-        <span>
+        <span className="flex justify-around">
           <Link to="/register">No tienes cuenta?</Link>
           <Link to="/"> Volver al inicio</Link>
         </span>
