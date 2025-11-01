@@ -7,14 +7,19 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      console.log("Usuario Loggeado:", userCredential.user);
       navigate("/");
     });
   };
   return (
     <main className="flex  h-screen w-full overflow-hidden">
-      <form className="lg:w-[50%] w-[100%] bg-base-200  flex flex-col justify-center items-center  border-none  p-4">
+      <form
+        onSubmit={handleLogin}
+        className="lg:w-[50%] w-[100%] bg-base-200  flex flex-col justify-center items-center  border-none  p-4"
+      >
         <legend className="fieldset-legend text-5xl">
           Bienvenido de vuelta
         </legend>
@@ -38,7 +43,7 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="btn btn-neutral mt-4 " onClick={handleLogin}>
+          <button className="btn btn-neutral mt-4 " type="submit">
             Entrar
           </button>
           <span className="flex justify-around w-full px-2 mt-4  text-sm">
