@@ -11,6 +11,7 @@ function Navbar() {
   const { user, logout } = useAuth();
   return (
     <nav className="navbar bg-base-300 shadow-sm md:justify-between">
+      {/* Mobile menu */}
       <div className="flex justify-between">
         <div className="dropdown md:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -51,11 +52,13 @@ function Navbar() {
           </ul>
         </div>
       </div>
+      {/* Center logo */}
       <div className="navbar-center">
         <Link to="/" className="text-4xl font-bold">
           4You
         </Link>
       </div>
+      {/* Right side menu */}
       <div className=" gap-x-5 hidden md:flex ">
         {user ? (
           <>
