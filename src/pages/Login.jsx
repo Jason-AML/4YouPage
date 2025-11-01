@@ -13,39 +13,47 @@ export const Login = () => {
     });
   };
   return (
-    <main
-      className="flex items-center justify-center h-screen"
-      style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover" }}
-    >
-      <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-        <legend className="fieldset-legend">Login</legend>
+    <main className="flex  h-screen w-full overflow-hidden">
+      <form className="lg:w-[50%] w-[100%] bg-base-200  flex flex-col justify-center items-center  border-none  p-4">
+        <legend className="fieldset-legend text-5xl">
+          Bienvenido de vuelta
+        </legend>
 
-        <label className="label">Email</label>
-        <input
-          type="email"
-          className="input"
-          placeholder="Email"
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="flex flex-col gap-3 w-3/4 xl:w-1/2 mt-6">
+          <label className="label">Email</label>
+          <input
+            type="email"
+            className="relative bg-base-100 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <label className="label">Password</label>
-        <input
-          type="password"
-          className="input"
-          placeholder="Password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label className="label">Password</label>
+          <input
+            type="password"
+            className="relative bg-base-100 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button className="btn btn-neutral mt-4" onClick={handleLogin}>
-          Entrar
-        </button>
-        <span className="flex justify-around">
-          <Link to="/register">No tienes cuenta?</Link>
-          <Link to="/"> Volver al inicio</Link>
-        </span>
-      </fieldset>
+          <button className="btn btn-neutral mt-4 " onClick={handleLogin}>
+            Entrar
+          </button>
+          <span className="flex justify-around w-full px-2 mt-4  text-sm">
+            <Link to="/register" className="btn">
+              No tienes cuenta?
+            </Link>
+            <Link to="/" className="btn btn-accent">
+              Volver al inicio
+            </Link>
+          </span>
+        </div>
+      </form>
+      <div className="lg:w-[50%] hidden lg:block">
+        <img src={bg} alt="" className="object-cover" />
+      </div>
     </main>
   );
 };
