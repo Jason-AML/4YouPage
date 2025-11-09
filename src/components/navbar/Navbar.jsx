@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import iconCar from "../../assets/icons/cart.png";
 import { useAuth } from "../../context/AuthContext";
 import imgUser from "../../assets/perfil/blank-profile-picture.webp";
@@ -9,11 +9,20 @@ import ProductContext from "../../context/ProductContext";
 function Navbar() {
   const { car = [] } = useContext(ProductContext);
   const { user, logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <nav className="navbar bg-base-300 shadow-sm md:justify-between">
       {/* Mobile menu */}
       <div className="flex justify-between">
-        <div className="dropdown md:hidden">
+        <div
+          aria-label="menu"
+          className="dropdown md:hidden"
+          aria-expanded={isMenuOpen ? "true" : "false"}
+          onClick={handleMenuToggle}
+        >
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +84,11 @@ function Navbar() {
               >
                 <span className="sr-only">Mi perfil</span>
               </Link>
-              <button className="btn btn-ghost " onClick={logout}>
+              <button
+                className="btn btn-ghost "
+                onClick={logout}
+                aria-label="cerrar sesion"
+              >
                 <i className="bxr  bx-arrow-out-left-square-half ">LOGOUT</i>
               </button>
             </div>
@@ -84,6 +97,7 @@ function Navbar() {
           <Link
             to="/register"
             className="btn hover:scale-105 transition ease-in-out duration-300"
+            aria-label="Registrar una nueva cuenta"
           >
             REGISTER
           </Link>
@@ -92,7 +106,10 @@ function Navbar() {
           <div className="indicator">
             <Link to="/carshop" className="items-center justify-center flex">
               <img src={iconCar} alt="Carrito de compras" className="w-5 h-5" />
-              <span className="badge badge-xs badge-primary indicator-item">
+              <span
+                className="badge badge-xs badge-primary indicator-item"
+                aria-label="polite"
+              >
                 {car.length}
               </span>
             </Link>
